@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>The Penman's Provocation</title>
+    
+</head>
+
+<body>
+        
+    <div class="container" id="perspectivePrompt">
+        <p>Are you looking to practice writing from different perspectives?</p>
+        <button class="btn btn-black" id="perspectiveButton" type="button">Random Perspective</button>
+    </div>
+    <div class="container" id="perspectiveRes">
+        <p id="perspectiveText"></p>
+    </div>
+    
+    <div id="protagonist">
+        <p>Generate a good guy.</p>
+        <button id="protagonistButton" type="button">Protagonist</button>
+    </div>
+    <div id="protagRes"><p id = "protag"></p></div>
+    
+    <div id="antagonist">
+        <p>Generate a bad guy</p>
+        <button id="antagonistButton" type="button">Antagonist</button>
+    </div>
+    <div id="antagRes">
+        <p id = "antag"></p>
+    </div>
+    
+    <div id="location">
+        <p>Generate a location</p>
+        <button id="earthButton" type="button">Random Location on Earth</button>
+        <button id="mythButton" type="button">Random Location Anywhere</button>
+    </div>
+    <div id="locationEarthRes">
+        <p id = "locationEarthText"></p>
+    </div>
+    <div id = "locationMythRes">
+        <p id = "locationMythText"></p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="Arrays.js"></script>
+    <script>
+    
+    $(document).ready(function() {
+        $('#perspectiveRes').hide();
+        $('#protagRes').hide();
+        $('#antagRes').hide();
+        $('#locationEarthRes').hide();
+        $('#locationMythRes').hide();
+        
+    $('#perspectiveButton').on('click', function () {
+        var num = Math.floor((Math.random() * 6) + 0);
+        $("#perspectiveText").html(perspectives[num]);
+        $("#perspectivePrompt").hide();
+        $('#perspectiveRes').show();
+           
+    });
+        
+    $('#protagonistButton').on('click', function () {
+        //Generate first and last name
+        
+        var numOne = Math.floor((Math.random() * fName.length) + 0);
+        var numTwo = Math.floor((Math.random() * lName.length) + 0);
+        //generate age
+        var agePro =  Math.floor((Math.random() * 100) + 10);
+        //generate characteristics
+        var proCharOne = Math.floor((Math.random() * posChar.length) + 0);
+        var proCharTwo = Math.floor((Math.random() * posChar.length) + 0);
+        var nueCharOne = Math.floor((Math.random() * nuetChar.length) + 0);
+        var negCharOne = Math.floor((Math.random() * negChar.length) + 0);
+        $("#protag").html(fName[numOne] + " " + lName[numTwo] + " " + "<br>" + fName[numOne] + " is " + agePro + ", " + posChar[proCharOne] + ", " + posChar[proCharTwo] + ", and " + nuetChar[nueCharOne] + "<br> At times, they can also be " + negChar[negCharOne]);
+        $('#protagRes').show();
+    });
+        
+    $('#antagonistButton').on('click', function () {
+        //Generate first and last name
+        
+        var numOne = Math.floor((Math.random() * fName.length) + 0);
+        var numTwo = Math.floor((Math.random() * lName.length) + 0);
+        //generate age
+        var ageAnt =  Math.floor((Math.random() * 100) + 10);
+        //generate characteristics
+        var negCharOne = Math.floor((Math.random() * negChar.length) + 0);
+        var negCharTwo = Math.floor((Math.random() * negChar.length) + 0);
+        var nueCharOne = Math.floor((Math.random() * nuetChar.length) + 0);
+        var posCharOne = Math.floor((Math.random() * posChar.length) + 0);
+        $("#antag").html(fName[numOne] + " " + lName[numTwo] + " " + "<br>" + fName[numOne] + " is " + ageAnt + ", " + negChar[negCharOne] + ", " + negChar[negCharTwo] + ", and " + nuetChar[nueCharOne] + "<br> At times, they can also be " + posChar[posCharOne]);
+        $('#antagRes').show();
+    });
+        
+    $('#earthButton').on('click', function () {
+        var numOne = Math.floor((Math.random() * realLoc.length) + 0);
+        $("#locationEarthText").html("Your story could be set in " + realLoc[numOne]);
+        $('#locationEarthRes').show();
+    });    
+        
+    $('#mythButton').on('click', function () {
+        var numOne = Math.floor((Math.random() * mythLoc.length) + 0);
+        $("#locationMythText").html("Your story could be set in " + mythLoc[numOne]);
+        $('#locationMythRes').show();
+        $('#locationEarthRes').hide();
+    });            
+        
+        
+});
+    
+            
+    </script>
+
+    
+</body>
+</html>
